@@ -1,6 +1,6 @@
 # AJE-AR.js-boilerplate
 Augmented reality experience boilerplate, this a modified version of the three.js
-basic boilerplate available on (AR.js github page)[https://github.com/jeromeetienne/AR.js/blob/master/three.js/examples/basic.html]
+basic boilerplate available on [AR.js github page](https://github.com/jeromeetienne/AR.js/blob/master/three.js/examples/basic.html)
 The example overlays Al-jazeera logo with a transparent image
 
 # main additions
@@ -19,9 +19,10 @@ cd ar-aje
 
 npm install
 
+
 webpack --watch
 ```
 
-run any http server in the main directory to start the camera in the browser
+run any http server in the main directory to start the app in the browser
 
 ngrok can be used to tunnel the connection to have a link to use for smartphones
