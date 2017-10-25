@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<!-- three.js library -->
+<script src='lib/three.min.js'></script>
+<!-- ar.js -->
+<script src="lib/ar.min.js"></script>
+
+<style>	
+body {
+	margin : 0px;
+	overflow: hidden;
+	font-family: Monospace;
+}
+.container {
+	position: absolute;
+	bottom: 10px;
+	width:100%;
+	text-align:center;
+	z-index: 1;
+}
+#snapshot {
+    position: absolute;
+    right: 30px;
+    bottom: 20px;
+    border: none;
+    background: green;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    font-size: 30px;
+}
+
+#doubleImage {
+    position: absolute;
+    visibility: hidden;
+}
+</style>
+
+<body>
+	<div class='container'>
+		<button id='snapshot' type="button">❑</button>
+		<canvas width='640' height='480' id='doubleImage'></canvas>
+	</div>
+	<script src='./app.min.js'></script>
+</body>

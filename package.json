@@ -1,0 +1,30 @@
+{
+  "name": "ar-aje",
+  "version": "1.0.0",
+  "description": "",
+  "main": "wepack.config.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AJInteractive/AJE-AR.js-boilerplate.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "csv-loader": "^2.1.1",
+    "mark.js": "^8.11.0",
+    "webpack": "^3.7.1"
+  },
+  "bugs": {
+    "url": "https://github.com/AJInteractive/AJE-AR.js-boilerplate/issues"
+  },
+  "homepage": "https://github.com/AJInteractive/AJE-AR.js-boilerplate#readme"
+}
