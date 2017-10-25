@@ -46,66 +46,23 @@ var arToolkitSource = new THREEx.ArToolkitSource({
   // sourceUrl : '../data/videos/headtracking.mp4',
 });
 
+// =============================================================================
+// UI EVENTS
+// =============================================================================
+
+// initlial resise of the canvas
 arToolkitSource.init(function onReady() {
   onResize();
 });
 
-function takeScreenshot() {
-  var w = window.open("", "");
-  w.document.title = "Screenshot";
-  var img = new Image();
-  var secondImg = new Image();
-  renderer.render(scene, camera);
-  var doubleImageCanvas = document.getElementById("doubleImage");
-  var context = doubleImageCanvas.getContext("2d");
-  var sources = {
-    firstImage: renderer.domElement.toDataURL("image/png"),
-    secondImage: arToolkitContext.arController.canvas.toDataURL("image/png")
-  };
-  loadImages(sources, function(images) {
-    context.drawImage(images.secondImage, 0, 0);
-    context.drawImage(images.firstImage, 0, 0);
-    img.src = doubleImageCanvas.toDataURL("image/png");
-    img.style = "width:100%;";
-    w.document.body.appendChild(img);
-  });
-}
-
-function loadImages(sources, callback) {
-  var images = {};
-  var loadedImages = 0;
-  var numImages = 0;
-  // get num of sources
-  for (var src in sources) {
-    numImages++;
-  }
-  for (var src in sources) {
-    images[src] = new Image();
-    images[src].onload = function() {
-      if (++loadedImages >= numImages) {
-        callback(images);
-      }
-    };
-    images[src].src = sources[src];
-  }
-}
-
 // on button click take screen shot
-document.getElementById("snapshot").addEventListener("click", function() {
-  takeScreenshot();
-});
+document.getElementById("snapshot").addEventListener("click", takeScreenshot);
 
 // handle resize
 window.addEventListener("resize", function() {
   onResize();
 });
-function onResize() {
-  arToolkitSource.onResize();
-  arToolkitSource.copySizeTo(renderer.domElement);
-  if (arToolkitContext.arController !== null) {
-    arToolkitSource.copySizeTo(arToolkitContext.arController.canvas);
-  }
-}
+
 ////////////////////////////////////////////////////////////////////////////////
 //          initialize arToolkitContext
 ////////////////////////////////////////////////////////////////////////////////
@@ -186,3 +143,57 @@ requestAnimationFrame(function animate(nowMsec) {
     onRenderFct(deltaMsec / 1000, nowMsec / 1000);
   });
 });
+
+// =============================================================================
+// events function
+// =============================================================================
+
+function takeScreenshot() {
+  var w = window.open("", "");
+  w.document.title = "Screenshot";
+  var img = new Image();
+  var secondImg = new Image();
+  renderer.render(scene, camera);
+  var doubleImageCanvas = document.getElementById("doubleImage");
+  var context = doubleImageCanvas.getContext("2d");
+  var sources = {
+    firstImage: renderer.domElement.toDataURL("image/png"),
+    secondImage: arToolkitContext.arController.canvas.toDataURL("image/png")
+  };
+  loadImages(sources, function(images) {
+    context.drawImage(images.secondImage, 0, 0);
+    context.drawImage(images.firstImage, 0, 0);
+    img.src = doubleImageCanvas.toDataURL("image/png");
+    img.style = "width:100%;";
+    w.document.body.appendChild(img);
+  });
+}
+
+// helper function to load images into the dom
+function loadImages(sources, callback) {
+  var images = {};
+  var loadedImages = 0;
+  var numImages = 0;
+  // get num of sources
+  for (var src in sources) {
+    numImages++;
+  }
+  for (var src in sources) {
+    images[src] = new Image();
+    images[src].onload = function() {
+      if (++loadedImages >= numImages) {
+        callback(images);
+      }
+    };
+    images[src].src = sources[src];
+  }
+}
+
+// resize canvas on browser resize
+function onResize() {
+  arToolkitSource.onResize();
+  arToolkitSource.copySizeTo(renderer.domElement);
+  if (arToolkitContext.arController !== null) {
+    arToolkitSource.copySizeTo(arToolkitContext.arController.canvas);
+  }
+}
