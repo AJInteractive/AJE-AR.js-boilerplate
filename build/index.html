@@ -5,42 +5,77 @@
 <!-- ar.js -->
 <script src="lib/ar.min.js"></script>
 
-<style>	
-body {
-	margin : 0px;
-	overflow: hidden;
-	font-family: Monospace;
-}
-.container {
-	position: absolute;
-	bottom: 10px;
-	width:100%;
-	text-align:center;
-	z-index: 1;
-}
-#snapshot {
-    
-    border: none;
-    background: rgba(255, 255, 255, 0.3);
-    color: #fff;
-    width: 100px;
-    height: 100px;
-    border-radius: 100px;
-	border:5px solid orange;
-    font-size: 30px;
-	outline: none;
-}
+<style>
+	* {
+		font-family: Helvetica, Arial, sans-serif
+	}
 
-#doubleImage {
-    position: absolute;
-    visibility: hidden;
-}
+	body {
+		margin: 0px;
+		overflow: hidden;
+		font-family: Monospace;
+	}
+
+	.container {
+		position: absolute;
+		bottom: 10px;
+		width: 100%;
+		text-align: center;
+		z-index: 1;
+	}
+
+	#snapshot {
+		border: none;
+		background: rgba(255, 255, 255, 0.3);
+		color: #fff;
+		width: 100px;
+		height: 100px;
+		border-radius: 100px;
+		border: 5px solid orange;
+		font-size: 30px;
+		outline: none;
+	}
+
+	#doubleImage {
+		position: absolute;
+		visibility: hidden;
+	}
+
+	div.select {
+		padding: 20px;
+		color: #fff;
+	}
+
+	div.select select {
+		border: 2px solid orange;
+		background: none;
+		height: 40px;
+		color: #fff;
+		border-radius: 5px;
+	}
+	
+	div#thumb{
+		color:#fff;
+	}
+	
+	div#thumb button{
+		border:none;
+		padding:none;
+		background:none;
+		outline: none;
+	}
 </style>
 
 <body>
 	<div class='container'>
 		<button id='snapshot' type="button"></button>
-		<canvas width='640' height='480' id='doubleImage'></canvas>
+		<div class="select">
+			<label for="videoSource">Switch camera:  </label><select id="videoSource"></select>
+		</div>
+		<canvas id='doubleImage'></canvas>
+		<div id="thumb">
+			 <button><img id='img-thumb' src="images/old-aje.jpg" width='100px' alt=""></button>
+		</div>
 	</div>
 	<script src='./app.min.js'></script>
 </body>

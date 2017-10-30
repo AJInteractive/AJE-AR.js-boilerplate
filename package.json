@@ -26,5 +26,9 @@
   "bugs": {
     "url": "https://github.com/AJInteractive/AJE-AR.js-boilerplate/issues"
   },
-  "homepage": "https://github.com/AJInteractive/AJE-AR.js-boilerplate#readme"
+  "homepage": "https://github.com/AJInteractive/AJE-AR.js-boilerplate#readme",
+  "dependencies": {
+    "rtc-everywhere": "0.0.5",
+    "webrtc-adapter": "^5.0.6"
+  }
 }
